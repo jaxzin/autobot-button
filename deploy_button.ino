@@ -68,7 +68,7 @@ Adafruit_BluefruitLE_SPI ble(BLUEFRUIT_SPI_CS, BLUEFRUIT_SPI_IRQ, BLUEFRUIT_SPI_
 #define PIXEL_NUM 6
 
 #define STRIP_ANIMATION_DELAY 100
-#define ANIMATION_FRAMES 10
+#define ANIMATION_FRAMES 20
 
 // constants won't change. They're used here to
 // set pin numbers:
@@ -281,15 +281,27 @@ void colorSnap(uint32_t c, uint8_t wait) {
 uint32_t colorFade(uint32_t c1, uint32_t c2, uint8_t wait) {
 
   for(uint8_t frame = 0; frame < ANIMATION_FRAMES; frame++) {
-    uint32_t frameColor = blend(c1, c2, ((float) frame) / ANIMATION_FRAMES-1 );
+    float frameRatio = ((float) frame) / (ANIMATION_FRAMES-1);
+    uint32_t frameColor = blend(c1, c2, frameRatio );
+    
     for(uint16_t i=0; i<strip.numPixels(); i++) {
       strip.setPixelColor(i, frameColor);
     }
+    
     strip.show();
-    delay(wait/2);
+    delay(wait/4);
   }
 
   return c2;
+}
+
+void rgbDebug(uint32_t c) {
+    if (c <= 0xFFFFF) Serial.print(F("0"));
+    if (c <= 0xFFFF) Serial.print(F("0"));
+    if (c <= 0xFFF) Serial.print(F("0"));
+    if (c <= 0xFF) Serial.print(F("0"));
+    if (c <= 0xF) Serial.print(F("0"));
+    Serial.println(c, HEX);
 }
 
 void colorFollow(uint32_t mainColor, uint32_t cursorColor, uint8_t wait) {
