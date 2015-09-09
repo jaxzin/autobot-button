@@ -18,7 +18,7 @@ It will not respond to presses during this state.
 ### Connected
 ![Unknown](docs/images/autobot-connected.gif)
 
-When the button connects to a listener via Bluetooth LE, it will temporarily pulse blue and then fade to white.
+When the button connects to a listener via Bluetooth LE, it will temporarily pulse blue and then switch to the `UNKNOWN` state (a rainbow cycle).
 
 ### Pending
 ![Pending Light](docs/images/autobot-pending.gif)
