@@ -17,13 +17,15 @@ It will not respond to presses during this state.
 When the button connects to a listener via Bluetooth LE, it will temporarily pulse blue and then fade to white.
 
 ### Pending
-Once the button is pressed, the cursor will circle the button so the user sees their action has been registered. The
-overall color will remain what it previously was as of the last known state sent from the listener.
 ![Pending Light](docs/images/autobot_pending.gif)
 
+Once the button is pressed, the cursor will circle the button so the user sees their action has been registered. The
+overall color will remain what it previously was as of the last known state sent from the listener.
+
 ### Good
-When the listener responds with the state of `GOOD`, the button will fade to green from the previous color.
 ![Pending Light](docs/images/autobot_good.gif)
+
+When the listener responds with the state of `GOOD`, the button will fade to green from the previous color.
 
 ### Warning
 When the listener responds with the state of `WARN`, the button will fade to amber from the previous color.
@@ -33,8 +35,9 @@ When the listener responds with the state of `ERROR`, the button will fade to re
 
 
 ### Unknown
-When the listener responds with an `UNKNOWN` state, the button will cycle a rainbow.
 ![Pending Light](docs/images/autobot_unknown.gif)
+
+When the listener responds with an `UNKNOWN` state, the button will cycle a rainbow.
 
 ## Actions
 
